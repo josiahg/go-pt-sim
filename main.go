@@ -44,7 +44,7 @@ func main() {
 	ptCountPtr := flag.Int("pt-count", 10, "Number of patients to simulate concurrently")
 	flag.Parse()
 
-	event := make(chan string)
+	event := make(chan string, 1000)
 
 	for i := 1; i <= *ptCountPtr; i++ {
 		go pt(i, *intervalPtr, event)
